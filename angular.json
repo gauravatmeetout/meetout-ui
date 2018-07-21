@@ -23,9 +23,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/themes/all-themes.css",
+              "src/assets/css/materialize.css",
+              "src/assets/css/bootstrap/css/bootstrap.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery.js",
+              "src/assets/js/jquery.slimscroll.js",
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/admin.js"
+            ]
           },
           "configurations": {
             "production": {
