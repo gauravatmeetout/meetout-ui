@@ -22,18 +22,8 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css",
-              "src/assets/css/themes/all-themes.css",
-              "src/assets/css/materialize.css",
-              "src/assets/css/bootstrap/css/bootstrap.css"
-            ],
-            "scripts": [
-              "src/assets/js/jquery.js",
-              "src/assets/js/jquery.slimscroll.js",
-              "src/assets/js/bootstrap.js",
-              "src/assets/js/admin.js"
-            ]
+            "styles": [ "src/styles.css"],
+            "scripts": [ ]
           },
           "configurations": {
             "production": {
@@ -80,6 +70,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": [],

@@ -1,8 +1,12 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<section class="content">
-    <div class="container-fluid">
-        <router-outlet></router-outlet>
-    </div>
-</section>
-<app-footer></app-footer>
+<mat-sidenav-container class="container">
+    <mat-sidenav #sidenav [(mode)]="over" [(opened)]="opened" class="bottom-to-top">
+        <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header></app-header>
+        <div style="padding:2%">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

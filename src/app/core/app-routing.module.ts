@@ -6,6 +6,10 @@ const routes: Routes = [
     path:"",
     pathMatch: 'full',
     loadChildren:"../modules/home/home.module#HomeModule"
+  },
+  {
+    path:"user",
+    loadChildren:"../modules/user/user.module#UserModule"
   }
 ];
 
