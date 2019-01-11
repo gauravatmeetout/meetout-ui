@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UserFormComponent implements OnInit {
 
   private userForm: FormGroup;
-  private editMode:boolean=false;
+  private editMode: boolean = false;
   private user: User = {
     _id: "",
     firstName: "",
@@ -26,6 +26,18 @@ export class UserFormComponent implements OnInit {
   };
 
   constructor(private userService: UserService, public route: ActivatedRoute) {
+
+    this.userForm = new FormGroup({
+      'firstName': new FormControl(this.user.firstName, [Validators.required]),
+      'lastName': new FormControl(this.user.lastName, [Validators.required]),
+      'email': new FormControl(this.user.email, [Validators.required, Validators.email]),
+      'phoneNumber': new FormControl(this.user.phoneNumber, [Validators.required, Validators.pattern(/(7|8|9)\d{9}/)]),
+      'dob': new FormControl(this.user.dob, Validators.required),
+      'address': new FormControl(this.user.address),
+      'password': new FormControl(this.user.password, Validators.required),
+      'confirmPassword': new FormControl("", [Validators.required, this.checkPasswordMatch])
+    });
+
     if (route) {
       this.route.params.subscribe(this.onParamGet.bind(this));
     }
@@ -34,24 +46,23 @@ export class UserFormComponent implements OnInit {
   onParamGet(params) {
     if (params['id']) {
       this.userService.getUser(params['id']).subscribe(user => {
-        this.editMode=true;
+        this.editMode = true;
         this.setForm(user);
       });
-    } else {
-      this.setForm(this.user);
     }
   }
 
   setForm(user: User) {
-    this.userForm = new FormGroup({
-      'firstName': new FormControl(user.firstName, [Validators.required]),
-      'lastName': new FormControl(user.lastName, [Validators.required]),
-      'email': new FormControl(user.email, [Validators.required, Validators.email]),
-      'phoneNumber': new FormControl(user.phoneNumber, [Validators.required, Validators.pattern(/(7|8|9)\d{9}/)]),
-      'dob': new FormControl(user.dob, Validators.required),
-      'address': new FormControl(user.address, Validators.required),
-      'password': new FormControl(user.password, Validators.required),
-      'confirmPassword': new FormControl("", [Validators.required, this.checkPasswordMatch])
+    console.log(user);
+    this.userForm.setValue({
+      'firstName': user.firstName,
+      'lastName': user.lastName,
+      'email': user.email,
+      'phoneNumber': user.phoneNumber,
+      'dob': user.dob,
+      'address': user.address,
+      'password': user.password,
+      'confirmPassword': ""
     });
   }
 
