@@ -13,7 +13,7 @@ const routes: Routes = [
     component: PermissionFormComponent
   },
   {
-    path: "edit/:id",
+    path: "edit/:slug",
     component: PermissionFormComponent
   }
 ];
